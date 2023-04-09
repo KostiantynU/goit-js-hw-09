@@ -6,6 +6,7 @@ const refs = {
   startBtnEl: document.querySelector('button[data-start]'),
   stopBtnEl: document.querySelector('button[data-stop]'),
   isDisabledStartBtn: (document.querySelector('button[data-start]').disabled = true),
+  isDisabledStopBtn: (document.querySelector('button[data-stop]').disabled = true),
   allValues: document.querySelectorAll('.value'),
 
   countId: null,
@@ -62,6 +63,7 @@ function startTimer() {
     Notiflix.Notify.failure('The timer is running!', refs.notiflixObj);
     return;
   }
+  refs.stopBtnEl.disabled = false;
   animateNumber();
   disAnimateNumber();
 
@@ -85,6 +87,7 @@ function startTimer() {
 function stopTimer() {
   refs.isActiveCycle = false;
   refs.startBtnEl.disabled = false;
+  refs.stopBtnEl.disabled = true;
   refs.allValues.forEach(el => {
     el.classList.remove('active-timer');
   }); // Можна натиснути кнопку стоп тоді, коли текст таймеру вже зелений, і він
