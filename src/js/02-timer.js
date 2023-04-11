@@ -20,6 +20,7 @@ const refs = {
     onClose(selectedDates) {
       beginOfWork(selectedDates[0]);
     },
+    enableSeconds: true,
   },
   timeToCount: null,
 
@@ -118,7 +119,7 @@ function convertMs(ms) {
 }
 
 function showResult({ days = 0, hours = 0, minutes = 0, seconds = 0 }) {
-  refs.days.textContent = addLeadingZero(days);
+  refs.days.textContent = addLeadingZeroForDays(days);
   refs.hours.textContent = addLeadingZero(hours);
   refs.minutes.textContent = addLeadingZero(minutes);
   refs.seconds.textContent = addLeadingZero(seconds);
@@ -126,6 +127,9 @@ function showResult({ days = 0, hours = 0, minutes = 0, seconds = 0 }) {
 
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
+}
+function addLeadingZeroForDays(value) {
+  return String(value).padStart(3, '0');
 }
 
 function animateNumber() {
