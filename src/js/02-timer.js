@@ -68,7 +68,7 @@ function startTimer() {
   refs.stopBtnEl.disabled = false;
   animateNumber();
   disAnimateNumber();
-
+  showResult(0);
   refs.countId = setInterval(() => {
     const tempObj = convertMs(refs.timeToCount - getCurrentTime());
     refs.isActiveCycle = true;
@@ -130,7 +130,11 @@ function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
 function addLeadingZeroForDays(value) {
-  return String(value).padStart(3, '0');
+  if (value < 99) {
+    return String(value).padStart(2, '0');
+  } else if (value > 99) {
+    return String(value).padStart(2, '0');
+  }
 }
 
 function animateNumber() {
