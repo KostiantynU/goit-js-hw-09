@@ -44,7 +44,8 @@ refs.stopBtnEl.addEventListener('click', stopTimer);
 const myDateTimeEl = flatpickr(refs.dateTimeEl, refs.options);
 
 function getCurrentTime() {
-  return (currentDate = new Date());
+  const currentDate = new Date();
+  return currentDate;
 }
 
 function beginOfWork(dateByUser) {
