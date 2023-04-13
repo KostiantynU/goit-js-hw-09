@@ -20,7 +20,7 @@ function beginOfWork({ target }) {
 }
 function beforeCratePromise(event) {
   event.preventDefault();
-  for (let i = 1; i <= refs.amountEl; i += 1) {
+  for (let i = 0; i < refs.amountEl; i += 1) {
     createPromise(i, refs.delayEl);
     refs.delayEl += refs.stepEl;
   }
@@ -43,10 +43,10 @@ function createPromise(position, delay) {
   return promise;
 }
 
-// createPromise(2, 1500)
-//   .then(({ position, delay }) => {
-//     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-//   })
-//   .catch(({ position, delay }) => {
-//     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-//   });
+createPromise(2, 1500)
+  .then(({ position, delay }) => {
+    console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+  })
+  .catch(({ position, delay }) => {
+    console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+  });
